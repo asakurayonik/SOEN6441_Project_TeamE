@@ -82,12 +82,9 @@ public class GUI {
 			public void mouseReleased(MouseEvent e) {				
 				String s = textField.getText();				
 				if (s.matches("^[0-9]*([\\.,]{1}[0-9]*){0,1}$")){
-					// -------------- do the computation here -----------------
-					/*double rad = Double.parseDouble(textField.getText());
-					Approximation a = new Approximation();
-					s = Double.toString(a.getCos(rad));*/
-					Calculator c = new Calculator();				
-					s = Double.toString(c.getAlpha());
+					Calculator c = new Calculator();	
+					double R = Double.parseDouble(s);
+					s = Double.toString(c.getL(R));
 					textArea.setText(s);
 				}
 				else {

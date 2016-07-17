@@ -20,6 +20,13 @@ public class Calculator {
 		return x_temp;
 	}
 	
+	double getL(double r){		
+		Approximation a = new Approximation();
+		double alpha = getAlpha();
+		double l = 2*r*(1-a.getCos(alpha/2));
+		return l;
+	}
+	
 	private double getAbs(double x){
 		if (x>0)
 			return x;
