@@ -45,7 +45,7 @@ public class GUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frame = new JFrame("CHEERS (Team-E)");
 		frame.setBounds(100, 100, 400, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -91,6 +91,7 @@ public class GUI {
 		textField_1.setBounds(98, 117, 86, 20);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
+		textField_1.setText("10");
 		
 		JLabel lblTolerence = new JLabel("Tolerance =");
 		lblTolerence.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -101,6 +102,7 @@ public class GUI {
 		textField_2.setBounds(98, 148, 86, 20);
 		frame.getContentPane().add(textField_2);
 		textField_2.setColumns(10);
+		textField_2.setText("0.0001");
 		
 		//------------------------ event handler -----------------------
 		btnCalculate.addMouseListener(new MouseAdapter() {
@@ -117,12 +119,13 @@ public class GUI {
 					long tStart = System.currentTimeMillis(); //start time
 					
 					// -------------- Computing ----------------
-					int p = Integer.parseInt(textField_1.getText()); 
-					double t = Double.parseDouble(textField_2.getText()); 
-					Calculator c = new Calculator(p, t);	
+					int p = Integer.parseInt(s1); 
+					double t = Double.parseDouble(s2); 
 					double R = Double.parseDouble(s);
+					textArea.setText("R = " + R +"\nPrecision = " + p + "\nTolerance = " + t + "\n\n");
+					Calculator c = new Calculator(p, t);			
 					s = Double.toString(c.getL(R));
-					textArea.setText(s + "\n");
+					textArea.append(s + "\n");
 					// -------------- Computing ----------------
 					
 					long tEnd = System.currentTimeMillis(); //end time
