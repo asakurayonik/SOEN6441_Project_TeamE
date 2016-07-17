@@ -15,6 +15,8 @@ public class GUI {
 	private JTextArea textArea;
 	private JButton btnCalculate;
 	private JButton btnExit;
+	private JTextField textField_1;
+	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -44,16 +46,16 @@ public class GUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 320, 240);
+		frame.setBounds(100, 100, 400, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		btnCalculate = new JButton("Calculate");
-		btnCalculate.setBounds(10, 75, 100, 50);
+		btnCalculate.setBounds(10, 186, 160, 50);
 		frame.getContentPane().add(btnCalculate);
 		
 		btnExit = new JButton("Exit");
-		btnExit.setBounds(10, 135, 100, 50);
+		btnExit.setBounds(202, 186, 160, 50);
 		frame.getContentPane().add(btnExit);
 		
 		JLabel lblInput = new JLabel("Input:");
@@ -72,24 +74,65 @@ public class GUI {
 		textField.setColumns(10);
 		
 		textArea = new JTextArea();
-		textArea.setBounds(120, 12, 174, 173);
+		textArea.setBounds(202, 11, 160, 157);
 		frame.getContentPane().add(textArea);
+		
+		JLabel lblParameter = new JLabel("Parameter:");
+		lblParameter.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblParameter.setBounds(10, 86, 100, 14);
+		frame.getContentPane().add(lblParameter);
+		
+		JLabel lblNewLabel = new JLabel("Precision =");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setBounds(10, 111, 79, 31);
+		frame.getContentPane().add(lblNewLabel);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(98, 117, 86, 20);
+		frame.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblTolerence = new JLabel("Tolerance =");
+		lblTolerence.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblTolerence.setBounds(10, 139, 79, 36);
+		frame.getContentPane().add(lblTolerence);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(98, 148, 86, 20);
+		frame.getContentPane().add(textField_2);
+		textField_2.setColumns(10);
 		
 		//------------------------ event handler -----------------------
 		btnCalculate.addMouseListener(new MouseAdapter() {
 			@Override
 			// Associate with Calculator
-			public void mouseReleased(MouseEvent e) {				
-				String s = textField.getText();				
-				if (s.matches("^[0-9]*([\\.,]{1}[0-9]*){0,1}$")){
-					Calculator c = new Calculator();	
+			public void mouseReleased(MouseEvent e) {			
+				String s = textField.getText();		
+				String s1 = textField_1.getText(); // precision for sin and cos
+				String s2 = textField_2.getText(); //tolerance for Newton's Method
+				
+				if (s.matches("^[0-9]*([\\.,]{1}[0-9]*){0,1}$")
+						&& s1.matches("^[1-9][0-9]{0,1}$")
+						&& s2.matches("^[0-9]*([\\.,]{1}[0-9]*){0,1}$")){
+					long tStart = System.currentTimeMillis(); //start time
+					
+					// -------------- Computing ----------------
+					int p = Integer.parseInt(textField_1.getText()); 
+					double t = Double.parseDouble(textField_2.getText()); 
+					Calculator c = new Calculator(p, t);	
 					double R = Double.parseDouble(s);
 					s = Double.toString(c.getL(R));
-					textArea.setText(s);
+					textArea.setText(s + "\n");
+					// -------------- Computing ----------------
+					
+					long tEnd = System.currentTimeMillis(); //end time
+					long tDelta = tEnd - tStart;
+					double elapsedSeconds = tDelta / 1000.0;
+					textArea.append("Used " + elapsedSeconds + " seconds.");
 				}
 				else {
-					textArea.setText("Please input a positive number.");
-				}		
+					textArea.setText("Notice:\nR: Positive Number\nPrecision: From 1 to 99\nTolerance: Positive Number");
+				}			
 			}
 		});
 		

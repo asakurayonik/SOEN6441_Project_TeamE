@@ -2,7 +2,12 @@
 
 public class Approximation {
 	
-	private int PRECISION = 4;
+	private int PRECISION = 10;
+	
+	public Approximation (int p)
+	{
+		PRECISION = p;
+	}
 	
 	//compute sin by using Taylor Series
 	double getSin(double x) { // X is Radiance
@@ -12,13 +17,13 @@ public class Approximation {
 	        if (i % 2 == 0) 
 	            sum += getPower(rad, 2*i+1) / getFactorial(2 * i + 1);
 	        else 
-	            sum -= getPower(rad, 2*i+1) / getFactorial(2 * i + 1);
-	        //System.out.println("Sum = " + sum + "\n");
+	            sum -= getPower(rad, 2*i+1) / getFactorial(2 * i + 1);	    
 	    }
+		System.out.println("Sin(" + x + ") = " + sum);
 		return sum;
 	}
 	
-	//compute sin by using Taylor Series
+	//compute cos by using Taylor Series
 	double getCos(double x) { // X is Radiance
 		double rad = x;
 		double sum = 1;
@@ -27,8 +32,8 @@ public class Approximation {
 	            sum += getPower(rad, 2*i) / getFactorial(2 * i);
 	        else 
 	            sum -= getPower(rad, 2*i) / getFactorial(2 * i);
-	        //System.out.println("Sum = " + sum + "\n");
 	    }
+		System.out.println("Cos(" + x + ") = " + sum);
 		return sum;
 	}
 
