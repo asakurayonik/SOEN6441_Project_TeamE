@@ -79,17 +79,20 @@ public class GUI {
 		btnCalculate.addMouseListener(new MouseAdapter() {
 			@Override
 			// Associate with Calculator
-			public void mouseReleased(MouseEvent e) {
-				double rad = Double.parseDouble(textField.getText());
-				Approximation a = new Approximation();
-				String s = Double.toString(a.getSin(rad));
+			public void mouseReleased(MouseEvent e) {				
+				String s = textField.getText();				
 				if (s.matches("^[0-9]*([\\.,]{1}[0-9]*){0,1}$")){
+					// -------------- do the computation here -----------------
+					/*double rad = Double.parseDouble(textField.getText());
+					Approximation a = new Approximation();
+					s = Double.toString(a.getCos(rad));*/
+					Calculator c = new Calculator();				
+					s = Double.toString(c.getAlpha());
 					textArea.setText(s);
 				}
 				else {
 					textArea.setText("Please input a positive number.");
-				}
-				
+				}		
 			}
 		});
 		
