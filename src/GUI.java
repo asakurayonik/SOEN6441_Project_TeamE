@@ -1,5 +1,4 @@
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -81,7 +80,9 @@ public class GUI {
 			@Override
 			// Associate with Calculator
 			public void mouseReleased(MouseEvent e) {
-				String s = textField.getText();
+				double rad = Double.parseDouble(textField.getText());
+				Approximation a = new Approximation();
+				String s = Double.toString(a.getSin(rad));
 				if (s.matches("^[0-9]*([\\.,]{1}[0-9]*){0,1}$")){
 					textArea.setText(s);
 				}
