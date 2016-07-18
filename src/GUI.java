@@ -1,10 +1,15 @@
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -91,7 +96,7 @@ public class GUI {
 		textField_1.setBounds(98, 117, 86, 20);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
-		textField_1.setText("10");
+		textField_1.setText("50");
 		
 		JLabel lblTolerence = new JLabel("Tolerance =");
 		lblTolerence.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -111,8 +116,11 @@ public class GUI {
 			public void mouseReleased(MouseEvent e) {			
 				String s = textField.getText();		
 				String s1 = textField_1.getText(); // precision for sin and cos
-				String s2 = textField_2.getText(); //tolerance for Newton's Method
+				String s2 = textField_2.getText(); // tolerance for Newton's Method
 				
+				if (s.isEmpty() || s.equals("0"))
+					JOptionPane.showMessageDialog(null, "Please enter a number greater than 0");
+				else{
 				if (s.matches("^[0-9]*([\\.,]{1}[0-9]{0,9}){0,1}$")
 						&& s1.matches("^[1-9][0-9]{0,1}$")
 						&& s2.matches("^[0-9]*([\\.,]{1}[0-9]{0,9}){0,1}$")){
@@ -135,7 +143,7 @@ public class GUI {
 				}
 				else {
 					textArea.setText("Notice:\nR: Positive Number\nPrecision: From 1 to 99\nTolerance: Positive Number");
-				}			
+				}	}		
 			}
 		});
 		
