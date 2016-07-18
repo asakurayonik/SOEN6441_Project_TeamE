@@ -21,10 +21,11 @@ public class Calculator {
 		double Abs = getAbs(x_zero - sin_x - Pi/2);
 		for (int i = 0; Abs > tolerance; i++) {
 			x_temp = x_temp - (x_temp - sin_x - Pi/2) / (1 - a.getCos(x_temp));	
+			System.out.println("x_temp = " + x_temp + "\n");
 			sin_x = a.getSin(x_temp);
 			Abs = getAbs(x_temp - sin_x - Pi/2);
 		}
-		System.out.println("Absolute value of the function is " + Abs + ", which is smaller than the tolerence.");
+		System.out.println("Absolute value of the function is smaller than the tolerence.");
 		System.out.println("Alpha = " + x_temp + "\n");
 		return x_temp;
 	}

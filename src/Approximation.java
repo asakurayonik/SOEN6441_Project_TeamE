@@ -17,7 +17,8 @@ public class Approximation {
 	        if (i % 2 == 0) 
 	            sum += getPower(rad, 2*i+1) / getFactorial(2 * i + 1);
 	        else 
-	            sum -= getPower(rad, 2*i+1) / getFactorial(2 * i + 1);	    
+	            sum -= getPower(rad, 2*i+1) / getFactorial(2 * i + 1);	   
+	      System.out.println("Step " + i + ".   " + sum);
 	    }
 		System.out.println("Sin(" + x + ") = " + sum);
 		return sum;
@@ -32,6 +33,7 @@ public class Approximation {
 	            sum += getPower(rad, 2*i) / getFactorial(2 * i);
 	        else 
 	            sum -= getPower(rad, 2*i) / getFactorial(2 * i);
+	        System.out.println("Step " + i + ".   " + sum);
 	    }
 		System.out.println("Cos(" + x + ") = " + sum);
 		return sum;

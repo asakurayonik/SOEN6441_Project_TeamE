@@ -113,9 +113,9 @@ public class GUI {
 				String s1 = textField_1.getText(); // precision for sin and cos
 				String s2 = textField_2.getText(); //tolerance for Newton's Method
 				
-				if (s.matches("^[0-9]*([\\.,]{1}[0-9]*){0,1}$")
+				if (s.matches("^[0-9]*([\\.,]{1}[0-9]{0,9}){0,1}$")
 						&& s1.matches("^[1-9][0-9]{0,1}$")
-						&& s2.matches("^[0-9]*([\\.,]{1}[0-9]*){0,1}$")){
+						&& s2.matches("^[0-9]*([\\.,]{1}[0-9]{0,9}){0,1}$")){
 					long tStart = System.currentTimeMillis(); //start time
 					
 					// -------------- Computing ----------------
