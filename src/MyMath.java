@@ -1,14 +1,18 @@
 // Approximation Algorithms for Numerical Problems.
 
-public class Approximation {
+public class MyMath {
 	
-	private int PRECISION = 10;
+	private int PRECISION;
 	
-	public Approximation (int p)
+	public MyMath (int p)
 	{
 		PRECISION = p;
 	}
 	
+	public MyMath() {
+		PRECISION = 10;
+	}
+
 	//compute sin by using Taylor Series
 	double getSin(double x) { // X is Radiance
 		double rad = x;
@@ -56,4 +60,39 @@ public class Approximation {
 		}
 		return result;
 	}
+	
+	//compute absolute value
+	double getAbs(double x){
+		if (x>0)
+			return x;
+		else 
+			return (-x);
+	}
+	
+	// compute Pi by Leibniz Formula
+	double getPi() {
+		double sum = 0;
+		for (int i = 1; i <= 100000*PRECISION; i++) {
+			if (i % 2 == 0)
+				sum -= (1.0 / (2 * i - 1));
+			else
+				sum += (1.0 / (2 * i - 1));
+		}
+		sum = sum * 4;
+		System.out.println("Pi = " + sum);
+		return sum;
+	}
+	
+	//compute Pi by Newton's Formula
+	/*double getPi() {
+		double sum = 1;
+		for (int i = 1; i <= 10000; i++) {
+			sum += (1.0 / (getPower(4, i) * getFactorial(2 * i + 1)));
+		}
+		sum = sum*3;
+		System.out.println("Pi = " + sum);
+		return sum;
+	}*/
+	
+	
 }
