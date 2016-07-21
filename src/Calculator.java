@@ -19,6 +19,7 @@ public class Calculator {
 	// compute alpha using Newton's Method
 	double getAlpha(){
 		MyMath a = new MyMath(PRECISION);
+		
 		double x_temp = x_zero;
 		double sin_x = a.getSin(x_zero);
 		double Abs = M.getAbs(x_zero - sin_x - Pi/2);
