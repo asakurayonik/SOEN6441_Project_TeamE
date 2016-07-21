@@ -1,23 +1,24 @@
+package Incarnation_1;
 // Approximation Algorithms for Numerical Problems.
 
 public class MyMath {
 	
-	private int PRECISION;
+	private int precision;
 	
 	public MyMath (int p)
 	{
-		PRECISION = p;
+		precision = p;
 	}
 	
 	public MyMath() {
-		PRECISION = 10;
+		precision = 10;
 	}
 
-	//compute sin by using Taylor Series
+	// compute sin by using Taylor Series
 	double getSin(double x) { // X is Radiance
 		double rad = x;
 		double sum = rad;
-		for (int i = 1; i <= PRECISION; i++) {
+		for (int i = 1; i <= precision; i++) {
 	        if (i % 2 == 0) 
 	            sum += getPower(rad, 2*i+1) / getFactorial(2 * i + 1);
 	        else 
@@ -28,11 +29,11 @@ public class MyMath {
 		return sum;
 	}
 	
-	//compute cos by using Taylor Series
+	// compute cos by using Taylor Series
 	double getCos(double x) { // X is Radiance
 		double rad = x;
 		double sum = 1;
-		for (int i = 1; i <= PRECISION; i++) {
+		for (int i = 1; i <= precision; i++) {
 	        if (i % 2 == 0) 
 	            sum += getPower(rad, 2*i) / getFactorial(2 * i);
 	        else 
@@ -43,7 +44,7 @@ public class MyMath {
 		return sum;
 	}
 
-	//compute power
+	// compute power
 	private double getPower(double x, int p) {
 		double result = 1;
 		for (int i = 0; i <p; i++) {
@@ -52,7 +53,7 @@ public class MyMath {
 		return result;
 	}
 	
-	//compute factorial
+	// compute factorial
 	private double getFactorial(int x) {
 		double result = 1;
 		for (int i = 1; i<=x; i++) {
@@ -61,7 +62,7 @@ public class MyMath {
 		return result;
 	}
 	
-	//compute absolute value
+	// compute absolute value
 	double getAbs(double x){
 		if (x>0)
 			return x;
@@ -72,7 +73,7 @@ public class MyMath {
 	// compute Pi by Leibniz Formula
 	double getPi() {
 		double sum = 0;
-		for (int i = 1; i <= 100000*PRECISION; i++) {
+		for (int i = 1; i <= 100000*precision; i++) {
 			if (i % 2 == 0)
 				sum -= (1.0 / (2 * i - 1));
 			else
@@ -83,7 +84,7 @@ public class MyMath {
 		return sum;
 	}
 	
-	//compute Pi by Newton's Formula
+	// compute Pi by Newton's Formula
 	/*double getPi() {
 		double sum = 1;
 		for (int i = 1; i <= 10000; i++) {
