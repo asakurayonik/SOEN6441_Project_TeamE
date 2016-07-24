@@ -22,13 +22,10 @@ public abstract class Team_E_Math {
 	public double getTolerance(){return tolerance;}
 	
 	public void setPrecision(int precision){
-		
 		this.precision = precision;
-		
 	}
 	
-	public void setTolerance(double tolerance){
-		
+	public void setTolerance(double tolerance){		
 		this.tolerance = tolerance;
 	}
 

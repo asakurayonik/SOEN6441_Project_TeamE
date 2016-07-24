@@ -48,7 +48,7 @@ public class Incarnation1 extends Team_E_Math{
 	}
 
 	@Override
-	public double getCos(double radiance) {
+	public double getCos(double radian) {
 		
 		// TODO Auto-generated method stub
 		
@@ -58,42 +58,42 @@ public class Incarnation1 extends Team_E_Math{
 			
 	        if (i % 2 == 0){
 	        	
-	        	sum += getPower(radiance, 2 * i) / getFactorial(2 * i);	
+	        	sum += getPower(radian, 2 * i) / getFactorial(2 * i);	
 	        }
 	        else{
 	        	
-	        	sum -= getPower(radiance, 2 * i) / getFactorial(2 * i);
+	        	sum -= getPower(radian, 2 * i) / getFactorial(2 * i);
 	        }
 	        
 	        System.out.println("Step " + i + ".   " + sum);
 	    }
 		
-		System.out.println("Cos(" + radiance + ") = " + sum);
+		System.out.println("Cos(" + radian + ") = " + sum);
 		
 		return sum;
 	}
 
 	@Override
-	public double getSin(double radiance) {
+	public double getSin(double radian) {
 		
 		// TODO Auto-generated method stub
-		double sum = radiance;
+		double sum = radian;
 		
 		for (int i = 1; i <= getPrecision(); i++) {
 			
 	        if (i % 2 == 0){
 	        	
-	        	sum += getPower(radiance, 2*i + 1) / getFactorial(2*i + 1);	
+	        	sum += getPower(radian, 2*i + 1) / getFactorial(2*i + 1);	
 	        } 
 	        else{
 	        	
-	        	sum -= getPower(radiance, 2*i + 1) / getFactorial(2*i + 1);
+	        	sum -= getPower(radian, 2*i + 1) / getFactorial(2*i + 1);
 	        }
 	            	   
 	      System.out.println("Step " + i + ".   " + sum);
 	    }
 		
-		System.out.println("Sin(" + radiance + ") = " + sum);
+		System.out.println("Sin(" + radian + ") = " + sum);
 		
 		
 		return sum;

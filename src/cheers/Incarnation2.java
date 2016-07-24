@@ -46,15 +46,15 @@ public class Incarnation2 extends Team_E_Math{
 	}
 
 	@Override
-	public double getCos(double radiance) {
+	public double getCos(double radian) {
 		// TODO Auto-generated method stub
-		return Math.cos(radiance);
+		return Math.cos(radian);
 	}
 
 	@Override
-	public double getSin(double radiance) {
+	public double getSin(double radian) {
 		// TODO Auto-generated method stub
-		return Math.sin(radiance);
+		return Math.sin(radian);
 	}
 
 
