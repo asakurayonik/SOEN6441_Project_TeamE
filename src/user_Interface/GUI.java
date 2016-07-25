@@ -1,4 +1,4 @@
-package User_Interface;
+package user_Interface;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;

@@ -14,9 +14,9 @@ public class Incarnation2 extends Team_E_Math{
 	@Override
 	public double getL(double radius) {
 		
-		// TODO Auto-generated method stub
 		double alpha = getAlpha();
 		double l = 2 * radius * (1 - getCos(alpha / 2));
+		
 		System.out.println("l = " + l + "\n");
 		
 		return l;
@@ -25,7 +25,6 @@ public class Incarnation2 extends Team_E_Math{
 	@Override
 	public double getAlpha() {
 		
-		// TODO Auto-generated method stub
 		double x_temp = x_zero;
 		double sin_x = getSin(x_zero);
 		double Abs = getAbsoluteValue(x_zero - sin_x - getPi() / 2);
@@ -47,26 +46,26 @@ public class Incarnation2 extends Team_E_Math{
 
 	@Override
 	public double getCos(double radian) {
-		// TODO Auto-generated method stub
+		
 		return Math.cos(radian);
 	}
 
 	@Override
 	public double getSin(double radian) {
-		// TODO Auto-generated method stub
+		
 		return Math.sin(radian);
 	}
 
 
 	@Override
 	public double getAbsoluteValue(double number) {
-		// TODO Auto-generated method stub
+		
 		return Math.abs(number);
 	}
 
 	@Override
 	public double getPi() {
-		// TODO Auto-generated method stub
+		
 		return Math.PI;
 	}
 

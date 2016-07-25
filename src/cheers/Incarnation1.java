@@ -18,7 +18,6 @@ public class Incarnation1 extends Team_E_Math{
 	@Override
 	public double getL(double radius) {
 		
-		// TODO Auto-generated method stub
 		double alpha = getAlpha();
 		double l = 2 * radius * (1 - getCos(alpha / 2));
 		System.out.println("l = " + l + "\n");
@@ -29,18 +28,19 @@ public class Incarnation1 extends Team_E_Math{
 	@Override
 	public double getAlpha() {
 		
-		// TODO Auto-generated method stub
 		double x_temp = x_zero;
 		double sin_x = getSin(x_zero);
 		double Abs = getAbsoluteValue(x_zero - sin_x - Pi / 2);
 		double tolerance = getTolerance();
 		
 		while (Abs > tolerance) {
+			
 			x_temp = x_temp - (x_temp - sin_x - Pi / 2) / (1 - getCos(x_temp));
 			System.out.println("x_temp = " + x_temp + "\n");
 			sin_x = getSin(x_temp);
 			Abs = getAbsoluteValue(x_temp - sin_x - Pi / 2);
 		}
+		
 		System.out.println("Absolute value of the function is smaller than the tolerence.");
 		System.out.println("Alpha = " + x_temp + "\n");
 		
@@ -49,8 +49,6 @@ public class Incarnation1 extends Team_E_Math{
 
 	@Override
 	public double getCos(double radian) {
-		
-		// TODO Auto-generated method stub
 		
 		double sum = 1;
 		
@@ -76,7 +74,6 @@ public class Incarnation1 extends Team_E_Math{
 	@Override
 	public double getSin(double radian) {
 		
-		// TODO Auto-generated method stub
 		double sum = radian;
 		
 		for (int i = 1; i <= getPrecision(); i++) {
@@ -102,7 +99,6 @@ public class Incarnation1 extends Team_E_Math{
 
 	public double getPower(double x, int power) {
 		
-		// TODO Auto-generated method stub
 		double result = 1;
 		
 		for (int i = 0; i < power; i++) {
@@ -116,7 +112,6 @@ public class Incarnation1 extends Team_E_Math{
 	
 	public double getFactorial(int number) {
 		
-		// TODO Auto-generated method stub
 		double result = 1;
 		
 		for (int i = 1; i <= number; i++) {
@@ -130,7 +125,6 @@ public class Incarnation1 extends Team_E_Math{
 	@Override
 	public double getAbsoluteValue(double number) {
 		
-		// TODO Auto-generated method stub
 		if (number > 0){
 			
 			return number;
@@ -145,7 +139,6 @@ public class Incarnation1 extends Team_E_Math{
 	@Override
 	public double getPi() {
 		
-		// TODO Auto-generated method stub
 		double sum = 0;
 		
 		for (int i = 1; i <= 100000 * getPrecision(); i++) {
