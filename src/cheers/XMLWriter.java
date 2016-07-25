@@ -22,19 +22,28 @@ public class XMLWriter {
 	
 	private DocumentBuilderFactory docFactory;
 	private DocumentBuilder docBuilder;
-	Document document;
-	String length;
-	String time;
+	private Document document;
 	
-	public XMLWriter(double length, double time){
+	
+	public XMLWriter(){	
 		
-		this.length = Double.toString(length);
-		this.time = Double.toString(time);
 	}
 	
-	public String WriteXML(){
+	/**
+	 * This method takes the results of an incarnation computation and converts it into an xml format
+	 *    
+	 * @author Eric Watat Lowe
+	 * @param  length The length of the segment X1X2 as described in the cheers specifications
+	 * @param  time the time complexity of the computation.
+	 * @return      the string representation of the xml document produced
+	 * @exception throws a ParserConfigurationException or a TransformerException
+	 */
+	public String WriteXML(double length, double time){
 		
 		try {
+			
+			String l = Double.toString(length);
+			String t = Double.toString(time);
 
 			docFactory = DocumentBuilderFactory.newInstance();
 			docBuilder = docFactory.newDocumentBuilder();
@@ -46,42 +55,42 @@ public class XMLWriter {
 			Element rootElement = document.createElement("cheers");
 			document.appendChild(rootElement);
 				
-			// result elements
+			// result element
 			Element results = document.createElement("result");
 			rootElement.appendChild(results);
 
-			// set attribute to length element
+			// set attribute to result element
 			Attr attr = document.createAttribute("length");
-			attr.setValue(length);
+			attr.setValue(l);
 			results.setAttributeNode(attr);
 
 			// complexity element
 			Element complexity = document.createElement("complexity");
-			complexity.appendChild(document.createTextNode(time)); // TODO: add the time
+			complexity.appendChild(document.createTextNode(t)); // TODO: add the time
 			results.appendChild(complexity);
 
 
 
-			// write the content into xml file
+			// write the content into xml document
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(document);
 
 			StringWriter writer = new StringWriter();
 			
+			//create a result to get a string representation of the xml document
 			StreamResult result = new StreamResult(writer);
 			
 			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
 			
+			//adds the document type to the xml document
 			DOMImplementation domImpl = document.getImplementation();
 			DocumentType docType = domImpl.createDocumentType("doctype", "cheersFormat", "cheers.dtd");
 			transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, docType.getPublicId());
 			transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, docType.getSystemId());
 			
 			transformer.transform(source, result);
-
-			System.out.println(writer.toString());
 			
 			return writer.toString();
 

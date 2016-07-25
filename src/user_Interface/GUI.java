@@ -56,6 +56,14 @@ public class GUI {
 		initialize();
 	}
 	
+	/**
+	 * This method gets the results of the computation of any Incarnation
+	 * and return
+	 *  
+	 * @author Eric Watat Lowe
+	 * @param  radius the radius of the circles to overlap
+	 * @return      the computed length "l" from a given incarnation 
+	 */
 	public double getResult(Team_E_Math m, double radius){
 		
 		return m.getL(radius);
@@ -140,17 +148,22 @@ public class GUI {
 		
 
 		// ------------------------ event handler -----------------------
+		
 		btnCalculate.addMouseListener(new MouseAdapter() {
+			
 			@Override
 			// Associate with Calculator
 			public void mouseReleased(MouseEvent e) {
+				
 				String s = textField_R.getText();
 				String s1 = textField_Precision.getText(); // precision for sin and cos
 				String s2 = textField_Tolerance.getText(); // tolerance for Newton's
 													// Method
 
-				if (s.isEmpty() || s.equals("0"))
+				if (s.isEmpty() || s.equals("0")){
+					
 					JOptionPane.showMessageDialog(null, "Please enter a number greater than 0");
+				}
 				else {
 					if (s.matches("^[0-9]*([\\.,]{1}[0-9]{0,9}){0,1}$") && s1.matches("^[1-9][0-9]{0,1}$")
 							&& s2.matches("^[0-9]*([\\.,]{1}[0-9]{0,9}){0,1}$")) {
@@ -175,6 +188,7 @@ public class GUI {
 						textAreaResult.append("Used " + elapsedSeconds + " seconds.\n\n");
 						// -------------------------------------------------------
 						
+						
 						// -------------- Computing Incarnation 2 ----------------
 						
 						tStart = System.currentTimeMillis(); // start time	
@@ -192,14 +206,14 @@ public class GUI {
 						
 						// -------------------------------------------------------
 						
-						// -------------- Error Check ----------------
+						// -------------- Error Check ----------------					
 						double relativeError = Math.abs(result1 - result2) / result2;
 						textAreaResult.append("Relative Error:\n" + relativeError + "\n");
 						
-						// -------------- XML ----------------
-						XMLWriter xmlOutput = new XMLWriter(result2,elapsedSeconds);
+						// -------------- XML ----------------		
+						XMLWriter xmlOutput = new XMLWriter();
 						textAreaXML.setText("Used " + elapsedSeconds + " seconds.\n");
-						textAreaXML.append(xmlOutput.WriteXML());
+						textAreaXML.append(xmlOutput.WriteXML(result2,elapsedSeconds));
 						
 					} else {
 						textAreaResult.setText(

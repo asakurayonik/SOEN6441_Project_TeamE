@@ -7,7 +7,11 @@ public class Incarnation1 extends Team_E_Math{
 	private double Pi;
 	private double x_zero = 2; // initial guess
 	
-
+	/** 
+	 * @author Eric Watat Lowe
+	 * @param  precision  the acceptable number of significant digits of the approximation
+	 * @param  tolerance the accepted error margin
+	 */
 	public Incarnation1(int precision, double tolerance){
 		
 		super(tolerance,precision);
@@ -15,16 +19,31 @@ public class Incarnation1 extends Team_E_Math{
 		Pi = getPi();
 	}
 	
+	/**
+	 * This method computes the length "l" which is the distance of the segment X1X2
+	 * As described in the cheers specification.
+	 *  
+	 * @author Ni Ye
+	 * @param  radius the radius of the circles to overlap
+	 * @return      the length "l" 
+	 */
 	@Override
 	public double getL(double radius) {
 		
 		double alpha = getAlpha();
 		double l = 2 * radius * (1 - getCos(alpha / 2));
+		
 		System.out.println("l = " + l + "\n");
 		
 		return l;
 	}
 
+	/**
+	 * This method computes the value of alpha given by the equation: alpha – sin(alpha) = Pi/2.
+	 *  
+	 * @author Ni Ye
+	 * @return      alpha 
+	 */
 	@Override
 	public double getAlpha() {
 		
@@ -47,6 +66,13 @@ public class Incarnation1 extends Team_E_Math{
 		return x_temp;
 	}
 
+	/**
+	 * This method computes the value of Cos(alpha) using the ------ Algorithm
+	 *  
+	 * @author Ni Ye
+	 * @param  radian the actual value of alpha
+	 * @return   Cos(alpha)    
+	 */
 	@Override
 	public double getCos(double radian) {
 		
@@ -71,6 +97,13 @@ public class Incarnation1 extends Team_E_Math{
 		return sum;
 	}
 
+	/**
+	 * This method computes the value of Sin(alpha) using the ------ Algorithm
+	 *  
+	 * @author Ni Ye
+	 * @param  radian the actual value of alpha
+	 * @return   Sin(alpha)    
+	 */
 	@Override
 	public double getSin(double radian) {
 		
@@ -97,6 +130,14 @@ public class Incarnation1 extends Team_E_Math{
 	}
 
 
+	/**
+	 * This method computes the power of a given number.
+	 *  
+	 * @author Ni Ye
+	 * @param  x the number
+	 * @param  power the exponent 
+	 * @return   the value of x to the power power   
+	 */
 	public double getPower(double x, int power) {
 		
 		double result = 1;
@@ -109,7 +150,13 @@ public class Incarnation1 extends Team_E_Math{
 		return result;
 	}
 
-	
+	/**
+	 * This method computes the factorial of a given number.
+	 *  
+	 * @author Ni Ye
+	 * @param  number  
+	 * @return   the factorial of the number   
+	 */
 	public double getFactorial(int number) {
 		
 		double result = 1;
@@ -122,6 +169,13 @@ public class Incarnation1 extends Team_E_Math{
 		return result;
 	}
 
+	/**
+	 * This method computes the absolute value of a given number.
+	 *  
+	 * @author Ni Ye
+	 * @param  number
+	 * @return   the absolute value of number   
+	 */
 	@Override
 	public double getAbsoluteValue(double number) {
 		
@@ -136,6 +190,12 @@ public class Incarnation1 extends Team_E_Math{
 			
 	}
 
+	/**
+	 * This method computes the value of Pi using the ----- Algorithm.
+	 *  
+	 * @author Ni Ye 
+	 * @return   the value of Pi   
+	 */
 	@Override
 	public double getPi() {
 		

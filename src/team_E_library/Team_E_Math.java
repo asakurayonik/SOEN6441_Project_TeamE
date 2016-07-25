@@ -18,14 +18,22 @@ public abstract class Team_E_Math {
 	public abstract double  getAbsoluteValue(double number);
 	public abstract double  getPi();
 	
-	public int getPrecision(){return precision;}
-	public double getTolerance(){return tolerance;}
+	public int getPrecision(){
+		
+		return precision;
+	}
+	public double getTolerance(){
+		
+		return tolerance;
+	}
 	
 	public void setPrecision(int precision){
+		
 		this.precision = precision;
 	}
 	
-	public void setTolerance(double tolerance){		
+	public void setTolerance(double tolerance){
+		
 		this.tolerance = tolerance;
 	}
 
