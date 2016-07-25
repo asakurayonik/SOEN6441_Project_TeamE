@@ -29,7 +29,7 @@ public class GUI {
 	private JButton btnExit;
 	private JTextField textField_Precision;
 	private JTextField textField_Tolerance;
-	private Team_E_Math math;
+
 
 	/**
 	 * Launch the application.
@@ -56,11 +56,9 @@ public class GUI {
 		initialize();
 	}
 	
-	public Team_E_Math setMath(Team_E_Math m){
+	public double getResult(Team_E_Math m, double radius){
 		
-		math = m;
-		
-		return math;
+		return m.getL(radius);
 	}
 
 	/**
@@ -158,27 +156,38 @@ public class GUI {
 							&& s2.matches("^[0-9]*([\\.,]{1}[0-9]{0,9}){0,1}$")) {
 						
 						// -------------- Computing Incarnation 1 ----------------
+						
 						long tStart = System.currentTimeMillis(); // start time
-						int p = Integer.parseInt(s1);
-						double t = Double.parseDouble(s2);
-						double R = Double.parseDouble(s);
-						double result1 = setMath(new Incarnation1(p,t)).getL(R);
+						
+						int precision = Integer.parseInt(s1);
+						double tolerance = Double.parseDouble(s2);
+						double radius = Double.parseDouble(s);
+						
+						double result1 = getResult(new Incarnation1(precision,tolerance), radius);
 						s = Double.toString(result1);
+						
 						textAreaResult.setText("Incarnation 1:\n" + s + "\n");
+						
 						long tEnd = System.currentTimeMillis(); // end time
 						long tDelta = tEnd - tStart;
 						double elapsedSeconds = tDelta / 1000.0;
+						
 						textAreaResult.append("Used " + elapsedSeconds + " seconds.\n\n");
 						// -------------------------------------------------------
 						
 						// -------------- Computing Incarnation 2 ----------------
+						
 						tStart = System.currentTimeMillis(); // start time	
-						double result2 = setMath(new Incarnation2(t,p)).getL(R);
+						
+						double result2 = getResult(new Incarnation2(tolerance,precision), radius);
 						s = Double.toString(result2);
+						
 						textAreaResult.append("Incarnation 2:\n" + s + "\n");
+						
 						tEnd = System.currentTimeMillis(); // end time
 						tDelta = tEnd - tStart;
 						elapsedSeconds = tDelta / 1000.0;
+						
 						textAreaResult.append("Used " + elapsedSeconds + " seconds.\n\n");
 						
 						// -------------------------------------------------------

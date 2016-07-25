@@ -75,7 +75,7 @@ public class XMLWriter {
 			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
 			
 			DOMImplementation domImpl = document.getImplementation();
-			DocumentType docType = domImpl.createDocumentType("doctype", "cheersFormat", "xmlFile.dtd");
+			DocumentType docType = domImpl.createDocumentType("doctype", "cheersFormat", "cheers.dtd");
 			transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, docType.getPublicId());
 			transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, docType.getSystemId());
 			
