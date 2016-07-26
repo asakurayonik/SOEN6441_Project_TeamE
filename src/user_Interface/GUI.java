@@ -160,7 +160,7 @@ public class GUI {
 				String s2 = textField_Tolerance.getText(); // tolerance for Newton's
 													// Method
 
-				if (s.isEmpty() || s.equals("0")){
+				if (s.isEmpty() || Double.parseDouble(s) <= 0){
 					
 					JOptionPane.showMessageDialog(null, "Please enter a number greater than 0");
 				}
@@ -190,7 +190,6 @@ public class GUI {
 						
 						
 						// -------------- Computing Incarnation 2 ----------------
-						
 						tStart = System.currentTimeMillis(); // start time	
 						
 						double result2 = getResult(new Incarnation2(tolerance,precision), radius);
@@ -207,7 +206,7 @@ public class GUI {
 						// -------------------------------------------------------
 						
 						// -------------- Error Check ----------------					
-						double relativeError = Math.abs(result1 - result2) / result2;
+						double relativeError = Math.abs((result1 - result2) / result2);
 						textAreaResult.append("Relative Error:\n" + relativeError + "\n");
 						
 						// -------------- XML ----------------		

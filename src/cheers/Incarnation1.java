@@ -39,10 +39,10 @@ public class Incarnation1 extends Team_E_Math{
 	}
 
 	/**
-	 * This method computes the value of alpha given by the equation: alpha – sin(alpha) = Pi/2.
+	 * This method computes the value of alpha given by the equation: alpha – sin(alpha) = Pi/2 using Newton's Method.
 	 *  
 	 * @author Ni Ye
-	 * @return      alpha 
+	 * @return     alpha 
 	 */
 	@Override
 	public double getAlpha() {
@@ -67,7 +67,7 @@ public class Incarnation1 extends Team_E_Math{
 	}
 
 	/**
-	 * This method computes the value of Cos(alpha) using the ------ Algorithm
+	 * This method computes the value of Cos(alpha) using the Taylor Series
 	 *  
 	 * @author Ni Ye
 	 * @param  radian the actual value of alpha
@@ -98,7 +98,7 @@ public class Incarnation1 extends Team_E_Math{
 	}
 
 	/**
-	 * This method computes the value of Sin(alpha) using the ------ Algorithm
+	 * This method computes the value of Sin(alpha) using the Taylor Series
 	 *  
 	 * @author Ni Ye
 	 * @param  radian the actual value of alpha
@@ -191,7 +191,7 @@ public class Incarnation1 extends Team_E_Math{
 	}
 
 	/**
-	 * This method computes the value of Pi using the ----- Algorithm.
+	 * This method computes the value of Pi using the Leibniz formula.
 	 *  
 	 * @author Ni Ye 
 	 * @return   the value of Pi   

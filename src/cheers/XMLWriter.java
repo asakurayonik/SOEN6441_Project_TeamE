@@ -46,6 +46,7 @@ public class XMLWriter {
 			String t = Double.toString(time);
 
 			docFactory = DocumentBuilderFactory.newInstance();
+			docFactory.setValidating(true);
 			docBuilder = docFactory.newDocumentBuilder();
 			
 
@@ -87,7 +88,7 @@ public class XMLWriter {
 			//adds the document type to the xml document
 			DOMImplementation domImpl = document.getImplementation();
 			DocumentType docType = domImpl.createDocumentType("doctype", "cheersFormat", "cheers.dtd");
-			transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, docType.getPublicId());
+			//transformer.setOutputProperty(OutputKeys.DOCTYPE_PUBLIC, docType.getPublicId());
 			transformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, docType.getSystemId());
 			
 			transformer.transform(source, result);
